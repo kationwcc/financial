@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>登陆</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+
+</head>
+<body>
+<div class="am-g myapp-login">
+	<div class="myapp-login-logo-block">
+		<div class="myapp-login-logo">
+			<i class="am-icon-jsfiddle"></i>
+		</div>
+		<div class="myapp-login-logo-text">
+			<div class="myapp-login-logo-text">
+				我的<span>经济状况</span>
+				<div class="info">记录生活的点点滴滴。</div>
+			</div>
+		</div>
+
+		<div class="login-font">
+			<i>登陆 </i> or <span><a href="register.html"> 注册</a></span>
+		</div>
+		<div class="am-u-sm-10 login-am-center">
+			<form class="am-form">
+				<fieldset>
+					<div class="am-form-group">
+						<input type="text" class="" id="username" placeholder="输入电子邮件">
+					</div>
+
+					<div class="am-form-group">
+						<input type="password" class="" id="password" placeholder="设置个密码吧">
+					</div>
+					<p><button class="am-btn am-btn-default" id="login" >登入</button></p>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="assets/js/jquery-1.10.2.js"></script>
+
+<script>
+
+	$(
+        function () {
+			$("#login").click(function () {
+				var username = $("#username").val();
+				var password = $("#password").val();
+            })
+        }
+	)
+
+
+</script>
+
+</body>
+</html>

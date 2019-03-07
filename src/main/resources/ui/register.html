@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+	<title>注册</title>
+	<meta name="renderer" content="webkit"/>
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="assets/css/app.css"/>
+	<link rel="stylesheet" href="assets/css/toastr.min.css"/>
+
+	<script src="assets/js/jquery-1.10.2.js" ></script>
+	<script src="assets/js/jquery.cookie.js"></script>
+	<script src="assets/js/toastr.min.js"></script>
+	<script>
+
+        $(
+            function () {
+                $("#register").click(function () {
+                    var name = $("#name").val();
+                    var username = $("#username").val();
+                    var password = $("#password").val();
+                    var passwordAgain = $("#password-again").val();
+
+                    if(password != passwordAgain){
+                        toastr.warning("两次输入的密码不一致");
+                        $("#password-again").val("");
+                        $("#password").val("").focus();
+                        return
+                    }
+
+                    var registerParam = {"name":name, "username":username,
+                        "password":password};
+
+                    $.post("/user/register", registerParam, function (ret) {
+                        if(ret.status < 0){
+                            toastr.error(ret.message());
+                            return ;
+                        }
+                        $.cookie('token', ret.data.token, { expires: 7 });
+                        $(location).attr('href', 'home.html');
+                    }, "JSON")
+                })
+            }
+        )
+
+
+	</script>
+
+</head>
+<body>
+<div class="am-g myapp-login">
+	<div class="myapp-login-logo-block">
+		<div class="myapp-login-logo">
+			<i class="am-icon-jsfiddle"></i>
+		</div>
+		<div class="myapp-login-logo-text">
+			<div class="myapp-login-logo-text">
+				我的<span>经济状况</span>
+				<div class="info">记录生活的点点滴滴。</div>
+			</div>
+		</div>
+
+		<div class="login-font">
+			<span><a href="index.html">登陆</a></span> or <i> 注册</i>
+		</div>
+		<div class="am-u-sm-10 login-am-center">
+			<div class="am-form">
+				<fieldset>
+
+					<div class="am-form-group">
+						<input type="text" class="" id="name" placeholder="您的昵称">
+					</div>
+
+					<div class="am-form-group">
+						<input type="text" class="" id="username" placeholder="您的账号">
+					</div>
+
+					<div class="am-form-group">
+						<input type="password" class="" id="password" placeholder="您的密码">
+					</div>
+
+					<div class="am-form-group">
+						<input type="password" class="" id="password-again" placeholder="重复输入密码">
+					</div>
+
+					<p><button class="am-btn am-btn-default" id="register" >注册</button></p>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+</body>
+</html>
