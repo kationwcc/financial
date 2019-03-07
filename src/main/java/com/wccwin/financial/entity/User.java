@@ -4,11 +4,12 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-@Entity()
-@Component
+@Entity
 @Table(name = "f_user")
-public class User {
+public class User implements Serializable{
+
 
     @Id
     @GeneratedValue

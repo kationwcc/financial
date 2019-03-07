@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
         result.setToken(token);
 
         userLogin.setToken(DigestUtils.md5DigestAsHex(token.getBytes()));
-        int count = userRepository.updateTokenById(userLogin.getId(), userLogin.getToken());
+        int count = userRepository.updateTokenById(userLogin.getToken(), userLogin.getId());
 
         if(count < 1) throw BusinessException.error("服务繁忙，请稍后重试。");
         return result;

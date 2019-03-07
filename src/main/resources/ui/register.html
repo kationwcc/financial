@@ -39,10 +39,10 @@
 
                     $.post("/user/register", registerParam, function (ret) {
                         if(ret.status < 0){
-                            toastr.error(ret.message());
+                            toastr.error(ret.msg);
                             return ;
                         }
-                        $.cookie('token', ret.data.token, { expires: 7 });
+                        $.cookie('user', ret, { expires: 7 });
                         $(location).attr('href', 'home.html');
                     }, "JSON")
                 })

@@ -19,6 +19,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Modifying
     @Query("update User u set u.token = ?1 where u.id = ?2")
-    public int updateTokenById(int id, String token);
+    public int updateTokenById(String token, int id);
 
 }
